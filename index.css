@@ -14,6 +14,10 @@ ol li {
     padding: 0;
 }
 
+li {
+    list-style: none;
+}
+
 ul,
 ol {
     margin: 0;
@@ -94,14 +98,112 @@ p {
     font-family: "PingFang SC", "Microsoft YaHei", Simsun, Helvetica, Arial, sans-serif;
 }
 
+.city-attention {
+    position: relative;
+    z-index: 3;
+}
 
-.header-left a:nth-child(5) {
+.click-attention {
     font-size: 14px;
+    border: 0;
+    background: 0;
+    position: relative;
+    left: -10px;
+    top: 2px;
     color: rgba(255, 255, 255, .7);
 }
 
-.header-left a:nth-child(5):hover {
+.click-attention {
     color: #fff;
+}
+
+.city-attention ol li {
+    position: relative;
+    width: 418px;
+    height: 32px;
+    padding-left: 20px;
+    line-height: 32px;
+    display: flex;
+    cursor: pointer;
+}
+
+.city-attention ol li:hover {
+    background-color: #f4f2f2;
+}
+
+.city-attention ol li:hover button {
+    display: block;
+}
+
+.city-attention ol li:hover img {
+    visibility: visible;
+}
+
+.city-attention ol li div {
+    font-size: 14px;
+
+    color: #555;
+    text-align: left;
+    float: left;
+    line-height: 32px;
+}
+
+.city-attention ol li button {
+    display: none;
+    position: absolute;
+    top: 9px;
+    left: 66px;
+    font-size: 11px;
+    border-radius: 5px;
+    border: 1px solid #acabab;
+    font-weight: 400;
+    color: #555;
+}
+
+.city-attention ol li div:first-child {
+    width: 146px;
+}
+
+.city-attention ol li div:nth-child(3) {
+    position: relative;
+    width: 136px;
+    padding-left: 20px;
+}
+
+.city-attention ol li div:nth-child(3)::before {
+    position: absolute;
+    top: 7px;
+    left: -6px;
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url(./upload/d1.png) no-repeat;
+    background-size: 20px 20px;
+}
+
+.city-attention ol li div:nth-child(4) {
+    width: 66px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.city-attention ol li img {
+    visibility: hidden;
+    position: absolute;
+    display: block;
+    height: 15px;
+    width: 15px;
+    top: 10px;
+    right: 11px;
+}
+
+.week ul li:nth-child(1) {
+    color: #c0bfbf;
+}
+
+.week ul li:nth-child(1) .wind {
+    color: #c0bfbf;
 }
 
 .areaName {
@@ -127,6 +229,7 @@ p {
     background-color: rgba(255, 255, 255, .2);
     border: none;
     outline: none;
+    color: #fff;
     padding: 5px 13px;
     line-height: 30px;
     margin-top: 7px;
@@ -143,17 +246,48 @@ p {
     display: inline-block;
 }
 
+.highlight {
+    /* background-color: yellow; */
+    color: rgb(50, 124, 244);
+    /* font-weight: bold; */
+    /* padding: 2px 0; */
+}
+
 .city-list {
     position: absolute;
+    display: none;
     z-index: 1;
     width: 277px;
     top: 37px;
-    right: 0px;
+    right: 5px;
     background-color: #fff;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, .15);
     border-radius: 5px;
     margin-top: 4px;
     padding: 20px 0 10px;
+
+}
+
+.city-padding {
+    padding: 20px 0 10px;
+}
+
+.city-scroll {
+    max-height: 226px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: block;
+    padding: 8px;
+}
+
+.city-list li {
+    width: 261px;
+    height: 34px;
+    color: #555;
+    font-size: 12px;
+    padding: 6px;
+    line-height: 22px;
+    cursor: pointer;
 }
 
 .city-list h3 {
@@ -216,8 +350,18 @@ p {
     min-height: 28px;
 }
 
+.history .history-ct li span {
+    line-height: 16px;
+    padding-bottom: 5px;
+}
+
+.city-list ul li span:hover {
+    background-color: #f0f0f0;
+}
+
 .history ul li,
 .hot-ct ul li {
+    font-size: 14px;
     float: left;
     width: 25%;
     height: 28px;
@@ -225,11 +369,31 @@ p {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    line-height: 28px;
+    line-height: 16px;
+    padding-left: 0;
 }
 
 .history {
     margin-bottom: 14px;
+}
+
+.city-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.city-list::-webkit-scrollbar-track {
+    background: #f5f5f5;
+    border-radius: 4px;
+}
+
+.city-list::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+    min-height: 5px;
+}
+
+.city-list::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
 }
 
 .city-list ul li span,
@@ -288,11 +452,14 @@ p {
 }
 
 .container p {
-    font-size: 14px;
-    color: #fff;
     margin-bottom: 20px;
     height: 19px;
     line-height: 19px;
+}
+
+.container p a {
+    font-size: 14px;
+    color: #fff;
     opacity: .6;
 }
 
@@ -314,21 +481,102 @@ p {
 
 .sun {
     font-size: 28px;
-    height: 45px;
-    line-height: 45px;
+    height: 28px;
+    line-height: 20px;
     margin-right: 24px;
+}
+
+.air {
+    position: relative;
+    /* background-color: #fff; */
 }
 
 .airleve {
     display: flex;
-
-    height: 18px;
-    line-height: 18px;
+    align-items: center;
+    cursor: pointer;
+    height: 24px;
+    line-height: 24px;
     font-size: 14px;
     color: #fff;
     padding: 3px 10px 3px 3px;
     border-radius: 18px;
-    background-color: #a3d765;
+}
+
+.air-content {
+    display: none;
+    position: absolute;
+    /* overflow: hidden; */
+    top: 36px;
+    left: 50%;
+    width: 254px;
+    margin-left: -127px;
+    border-radius: 6px;
+    height: 169px;
+    /* background-color: #fff; */
+}
+
+.air-head {
+    height: 42px;
+    line-height: 42px;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.sanjiao {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+    z-index: 3;
+    /* border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid transparent; */
+    /* border-bottom-color: #f1ab62; */
+    top: -13px;
+    left: 50%;
+    margin-left: -7px;
+}
+
+
+.air-bd {
+    width: 254px;
+    height: 126px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    background-color: #fff;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.air-bd div {
+    width: 33.33%;
+    height: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #efefef;
+}
+
+.air-bd div p:nth-child(1) {
+    font-size: 14px;
+    color: #555;
+    height: 24px;
+    line-height: 24px;
+    margin: 0;
+}
+
+.air-bd div p:nth-child(2) {
+    font-size: 12px;
+    color: #9f9f9f;
+    height: 24px;
+    line-height: 24px;
+    margin: 0;
 }
 
 .con-main .airleve::before {
@@ -355,6 +603,9 @@ p {
 
 .city-other div {
     margin-right: 42px;
+    height: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .city-other div i {
@@ -410,12 +661,12 @@ p {
 /* hour-weather 内容部分 */
 .hour-weather {
     height: 190px;
-
     margin: 130px auto 40px;
 
 }
 
 .weather-content {
+    position: relative;
     width: 1200px;
     height: 190px;
     border-radius: 10px;
@@ -463,8 +714,9 @@ p {
     /* background-color: red; */
 }
 
-.row a:first-child {
+.row button:first-child {
     display: block;
+    border: 0;
     width: 22px;
     height: 22px;
     float: left;
@@ -472,8 +724,9 @@ p {
     background: url('./upload/c1.png'), no-repeat;
 }
 
-.row a:last-child {
+.row button:last-child {
     display: block;
+    border: 0;
     width: 22px;
     height: 22px;
     float: left;
@@ -481,18 +734,21 @@ p {
 }
 
 .weather-content ul {
+    position: absolute;
+    left: 30px;
+    top: 63px;
     width: 4800px;
     display: flex;
+    transition: all, 2s;
 }
 
 .weather-content ul li {
     width: 40px;
     height: 100px;
-    float: left;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 80px;
+    margin-right: 60px;
 }
 
 .weather-content ul li p {
@@ -505,6 +761,7 @@ p {
 
 .weather-content ul li img {
     display: block;
+    text-align: center;
     width: 30px;
     height: 30px;
     margin: 0 5px 18px;
@@ -514,6 +771,7 @@ p {
 .weather-content ul li div {
     font-size: 18px;
     height: 18px;
+    line-height: 14px;
     color: #384c78;
 }
 
@@ -527,6 +785,7 @@ p {
 }
 
 .week {
+    position: relative;
     width: 740px;
     height: 512px;
     background-color: #fff;
@@ -564,6 +823,8 @@ p {
     text-align: center;
     width: 100px;
     border: 1px solid #dce5f0;
+    background-color: #f8faff;
+    ;
     border-radius: 37px;
     line-height: 21px;
     font-size: 12px;
@@ -578,7 +839,7 @@ p {
 }
 
 .week ul li {
-    color: #c2c2c2;
+    color: #344665;
     width: 92px;
     padding: 11px 0 25px;
     display: flex;
@@ -596,6 +857,7 @@ p {
 .week ul li .data {
     font-size: 12px;
     height: 12px;
+    color: #8a9baf;
     line-height: 12px;
     margin-bottom: 30px;
 }
@@ -629,13 +891,36 @@ p {
     font-size: 12px;
     height: 12px;
     line-height: 12px;
+    color: #8a9baf;
     /* margin-bottom: 30px; */
+    /* background-color: #fff; */
+}
+
+.week ul li:nth-child(2) {
+    background-color: #f8faff;
+}
+
+.chart-container {
+    position: absolute;
+    left: 0;
+    top: 190px;
+    width: 740px;
+    height: 174px;
+    /* background-color: pink; */
+}
+
+canvas {
+    width: 740px;
+    height: 174px;
+    padding: 0 20px;
 }
 
 .tips {
+    position: relative;
     width: 430px;
     height: 521px;
     /* background-color: #fff; */
+    overflow: hidden;
 }
 
 .tips h2 {
@@ -660,27 +945,65 @@ p {
 }
 
 .ct-page {
+    position: absolute;
+    top: 51px;
+    left: 0;
     display: flex;
     flex-wrap: wrap;
     align-content: space-between;
     justify-content: space-between;
-    width: 440px;
-    height: 480px;
-    padding-top: 18px;
+    width: 880px;
+    height: 460px;
+    transition: all 1s;
+    /* padding-top: 18px; */
     /* background-color: pink; */
 }
 
 .ct-sub {
+    /* transform: translateX(200px); */
+    position: relative;
     width: 200px;
     height: 135px;
+    overflow: hidden;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 14px 0 rgba(0, 0, 0, .08);
-    padding-top: 38px;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
 
+.ct-sub .zhishu {
+    width: 200px;
+    height: 270px;
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    transition: all 1s;
+    display: flex;
+    flex-direction: column;
+}
+
+.ct-sub .up {
+    width: 200px;
+    height: 135px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ct-sub .buttom {
+    width: 200px;
+    height: 135px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.5;
+    font-size: 13px;
+    color: #384c78;
 }
 
 .ct-sub img {
