@@ -8,6 +8,8 @@
     <link rel="shortcut icon" href="/bitbug_favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/index.css">
     <link rel="stylesheet" href="/normalize.css">
+    <link href="https://cdn.jsdelivr.net/npm/qweather-icons@1.7.0/font/qweather-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 
 <body>
@@ -21,7 +23,7 @@
                 <a href="">腾讯网官网</a>
                 <a href="">无障碍浏览</a>
                 <a href="" class="areaName">
-                    <p></p>陕西省 西安市
+                    <p></p><span>陕西省</span> <span>西安市</span>
                 </a>
                 <div class="city-attention">
                     <h3>关注的城市</h3>
@@ -29,9 +31,9 @@
                         <li>点击“添加关注”添加城市哟~</li>
                     </ol>
                 </div>
-                <a href="">[添加关注]</a>
-
+                <button href="" class="click-attention">[添加关注]</button>
                 <input type="text" placeholder="搜索市，区，县等" class="search">
+                <!-- <ul class="city-searchlist"></ul> -->
                 <div class="city-list">
                     <h3>当前定位</h3>
                     <p>西安市</p>
@@ -50,8 +52,7 @@
                     </div>
                     <div class="hot-ct">
                         <h3>热门城市</h3>
-                        <ul>
-                            <li><span>北京</span></li>
+                        <ul class="hotList">
                         </ul>
                     </div>
 
@@ -62,17 +63,50 @@
     </header>
     <!-- container 内容部分 -->
     <div class="container w">
-        <p>中央气象台11:10发布</p>
+        <p><a href="">中央气象台11:10发布</a></p>
         <div class="con-main">
             <div class="temperatrue">34°</div>
             <div class="sun">阴</div>
-            <div class="airleve"><span>23 优</span></div>
+            <div class="air">
+                <div class="airleve"><span>23 优</span></div>
+                <div class="air-content">
+                    <div class="sanjiao"></div>
+                    <div class="air-head">空气质量指数 104 轻度污染</div>
+                    <div class="air-bd">
+                        <div>
+                            <p>26</p>
+                            <p>PM2.5</p>
+                        </div>
+                        <div>
+                            <p>26</p>
+                            <p>PM10</p>
+                        </div>
+                        <div>
+                            <p>26</p>
+                            <p>SO2</p>
+                        </div>
+                        <div>
+                            <p>26</p>
+                            <p>NO2</p>
+                        </div>
+                        <div>
+                            <p>26</p>
+                            <p>O3</p>
+                        </div>
+                        <div>
+                            <p>26</p>
+                            <p>CO</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div class="city-other">
             <div><i></i><span>东南风 3-4级</span></div>
             <div><i></i><span>湿度 43%</span></div>
             <div><i></i><span>气压 955hPa</span></div>
-            <div><i></i><span>限行 5和0</span></div>
+            <div><i></i><span>限行 5 和 0</span></div>
         </div>
         <div class="content-tip">
             <div class="yuan"></div>
@@ -83,9 +117,9 @@
         <div class="weather-content">
             <h2 class="title">逐小时预报</h2>
             <a href="">数据来源于中国天气网</a>
-            <div class="row">
-                <a href=""></a>
-                <a href=""></a>
+            <div class="row hour-row">
+                <button></button>
+                <button></button>
             </div>
             <ul>
                 <li>
@@ -117,86 +151,27 @@
             <h2>7日天气预报</h2>
             <a href="">15日天气预报</a>
             <ul>
-                <li>
-                    <p class="day">昨天</p>
-                    <p class="data">7月25日</p>
-                    <p class="wt">阴</p>
-                    <img src="./upload/d1.png" alt="">
-
-                    <div class="line"></div>
-
-                    <img src="./upload/d1.png" alt="">
-                    <p class="wt2">阴</p>
-                    <div class="wind">微风1-3级</div>
-                </li>
-                <li>
-                    <p class="day">昨天</p>
-                    <p class="data">7月25日</p>
-                    <p class="wt">阴</p>
-                    <img src="./upload/d1.png" alt="">
-
-                    <div class="line"></div>
-
-                    <img src="./upload/d1.png" alt="">
-                    <p class="wt2">阴</p>
-                    <div class="wind">微风1-3级</div>
-                </li>
-                <li>
-                    <p class="day">昨天</p>
-                    <p class="data">7月25日</p>
-                    <p class="wt">阴</p>
-                    <img src="./upload/d1.png" alt="">
-
-                    <div class="line"></div>
-
-                    <img src="./upload/d1.png" alt="">
-                    <p class="wt2">阴</p>
-                    <div class="wind">微风1-3级</div>
-                </li>
-                <li>
-                    <p class="day">昨天</p>
-                    <p class="data">7月25日</p>
-                    <p class="wt">阴</p>
-                    <img src="./upload/d1.png" alt="">
-
-                    <div class="line"></div>
-
-                    <img src="./upload/d1.png" alt="">
-                    <p class="wt2">阴</p>
-                    <div class="wind">微风1-3级</div>
-                </li>
+                <li></li>
             </ul>
+            <div class="chart-container"><canvas id="temperatureChart" width="740" height="174"></canvas></div>
         </div>
         <div class="tips">
             <h2>生活指数</h2>
-            <div class="row">
-                <a href=""></a>
-                <a href=""></a>
+            <div class="row daily-row">
+                <button></button>
+                <button></button>
             </div>
             <div class="ct-page">
                 <div class="ct-sub">
-                    <img src="./upload/e1.png" alt="">
-                    <p>穿衣 炎热</p>
-                </div>
-                <div class="ct-sub">
-                    <img src="./upload/e1.png" alt="">
-                    <p>穿衣 炎热</p>
-                </div>
-                <div class="ct-sub">
-                    <img src="./upload/e1.png" alt="">
-                    <p>穿衣 炎热</p>
-                </div>
-                <div class="ct-sub">
-                    <img src="./upload/e1.png" alt="">
-                    <p>穿衣 炎热</p>
-                </div>
-                <div class="ct-sub">
-                    <img src="./upload/e1.png" alt="">
-                    <p>穿衣 炎热</p>
-                </div>
-                <div class="ct-sub">
-                    <img src="./upload/e1.png" alt="">
-                    <p>穿衣 炎热</p>
+                    <div class="zhishu">
+                        <div class="up">
+                            <img src="./upload/e1.png" alt="">
+                            <p>穿衣 炎热</p>
+                        </div>
+                        <div class="buttom">
+                            天气炎热，建议着短衫、短裙、短裤、薄型T恤衫等清凉夏季服装。
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -216,6 +191,8 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/index.js"></script>
+    <script src="./utils/request.js"></script>
+    <script src="/form-serialize.js"></script>
 </body>
 
 </html>
